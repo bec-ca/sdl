@@ -1,0 +1,176 @@
+cpp_library:
+  name: color
+  headers: color.hpp
+  libs: sdl_header
+
+cpp_library:
+  name: event
+  headers: event.hpp
+  libs: key_code
+
+cpp_library:
+  name: font
+  sources: font.cpp
+  headers: font.hpp
+  libs:
+    /bee/or_error
+    font_info
+    font_locator
+    renderer
+    sdl_error
+    sdl_header
+    sdl_ttf_header
+    texture
+
+cpp_library:
+  name: font_info
+  sources: font_info.cpp
+  headers: font_info.hpp
+  libs:
+    /bee/file_path
+    /bee/format
+
+cpp_library:
+  name: font_locator
+  sources: font_locator.cpp
+  headers: font_locator.hpp
+  libs:
+    /bee/file_path
+    /bee/filesystem
+    /bee/or_error
+    /bee/string_util
+    /bee/sub_process
+    font_info
+
+cpp_library:
+  name: key_code
+  sources: key_code.cpp
+  headers: key_code.hpp
+  libs: sdl_header
+
+cpp_library:
+  name: key_mapping
+  headers: key_mapping.hpp
+  libs: key_code
+
+cpp_library:
+  name: raw_image
+  sources: raw_image.cpp
+  headers: raw_image.hpp
+
+cpp_library:
+  name: rect
+  sources: rect.cpp
+  headers: rect.hpp
+  libs:
+    /yasf/cof
+    vec2
+
+cpp_test:
+  name: rect_test
+  sources: rect_test.cpp
+  libs:
+    /bee/testing
+    rect
+  output: rect_test.out
+
+cpp_library:
+  name: renderer
+  sources: renderer.cpp
+  headers: renderer.hpp
+  libs:
+    /bee/or_error
+    color
+    rect
+    sdl_error
+    sdl_header
+    texture
+    window
+
+system_lib:
+  name: sdl
+  command: sdl2-config
+  provide_headers: SDL.h
+
+cpp_library:
+  name: sdl_context
+  sources: sdl_context.cpp
+  headers: sdl_context.hpp
+  libs:
+    /bee/or_error
+    /bee/span
+    event
+    sdl_error
+    sdl_header
+
+cpp_library:
+  name: sdl_error
+  headers: sdl_error.hpp
+
+cpp_library:
+  name: sdl_header
+  headers: sdl_header.hpp
+  libs: sdl
+
+system_lib:
+  name: sdl_ttf
+  command: pkg-config
+  flags: SDL2_ttf
+  provide_headers: SDL2/SDL_ttf.h
+
+cpp_library:
+  name: sdl_ttf_header
+  headers: sdl_ttf_header.hpp
+  libs: sdl_ttf
+
+cpp_library:
+  name: sdl_types
+  headers: sdl_types.hpp
+
+cpp_library:
+  name: text_writer
+  sources: text_writer.cpp
+  headers: text_writer.hpp
+  libs:
+    /bee/or_error
+    renderer
+
+cpp_library:
+  name: texture
+  sources: texture.cpp
+  headers: texture.hpp
+  libs:
+    /bee/or_error
+    /pixel/image
+    raw_image
+    rect
+    sdl_header
+    sdl_types
+
+cpp_test:
+  name: ttf_test
+  sources: ttf_test.cpp
+  libs:
+    /bee/testing
+    font
+  output: ttf_test.out
+
+cpp_library:
+  name: vec2
+  headers: vec2.hpp
+  libs:
+    /yasf/serializer
+    /yasf/value
+
+cpp_library:
+  name: window
+  sources: window.cpp
+  headers: window.hpp
+  libs:
+    /bee/or_error
+    /pixel/image
+    sdl_context
+    sdl_header
+    sdl_types
+    vec2
+

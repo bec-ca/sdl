@@ -1,0 +1,96 @@
+cpp_library:
+  name: constants
+  sources: constants.cpp
+  headers: constants.hpp
+  libs: /sdl/vec2
+
+cpp_library:
+  name: controller
+  sources: controller.cpp
+  headers: controller.hpp
+  libs:
+    /bee/or_error
+    /sdl/event
+    /sdl/renderer
+    level
+
+cpp_binary:
+  name: example_font
+  libs: example_font_main
+
+cpp_library:
+  name: example_font_main
+  sources: example_font_main.cpp
+  libs:
+    /bee/print
+    /sdl/font
+    /sdl/renderer
+    /sdl/sdl_context
+    /sdl/window
+
+cpp_binary:
+  name: game
+  libs: game_main
+
+cpp_library:
+  name: game_main
+  sources: game_main.cpp
+  libs:
+    /bee/or_error
+    /bee/print
+    /sdl/renderer
+    /sdl/sdl_context
+    /sdl/window
+    controller
+    in_game
+    level_editor
+    menu
+
+cpp_library:
+  name: in_game
+  sources: in_game.cpp
+  headers: in_game.hpp
+  libs:
+    /bee/time
+    /sdl/event
+    /sdl/key_mapping
+    /sdl/rect
+    /sdl/texture
+    constants
+    controller
+    level
+
+cpp_library:
+  name: level
+  headers: level.hpp
+  libs:
+    /sdl/rect
+    /sdl/vec2
+
+cpp_library:
+  name: level_editor
+  sources: level_editor.cpp
+  headers: level_editor.hpp
+  libs:
+    /bee/file_reader
+    /bee/file_writer
+    /bee/print
+    /bee/time
+    /sdl/event
+    /sdl/key_mapping
+    /sdl/rect
+    /sdl/texture
+    /yasf/cof
+    constants
+    controller
+    level
+
+cpp_library:
+  name: menu
+  sources: menu.cpp
+  headers: menu.hpp
+  libs:
+    /sdl/key_mapping
+    /sdl/text_writer
+    controller
+
